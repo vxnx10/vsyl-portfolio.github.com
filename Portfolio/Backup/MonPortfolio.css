@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sylvana Chéreau - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c5f7d;
+            --secondary: #d4a574;
+            --accent: #8b6f47;
+            --bg-light: #faf8f5;
+            --bg-card: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --border: #e8e3dc;
+            --shadow: rgba(44, 95, 125, 0.08);
+            --success: #4a7c59;
+            --warning: #c17831;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #f0ede7 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--bg-card);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 16px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        nav .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--bg-card);
+            padding: 4rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px var(--shadow);
+            margin: 2rem 0;
+            border-left: 6px solid var(--secondary);
+            text-align: center;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero .description {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #234a5f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(44, 95, 125, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px var(--shadow);
+            margin: 2rem 0;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+        }
+
+        section h4 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        section p, section li {
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        /* Timeline for academic path */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--secondary);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 3px solid var(--bg-card);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .skill-card h4 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skill-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-card li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-top: 3px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 16px var(--shadow);
+        }
+
+        .project-card h4 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        /* Incident Cards */
+        .incident-card {
+            background: linear-gradient(135deg, #f8f6f3 0%, #ffffff 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--warning);
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .incident-card h4 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .incident-section {
+            margin: 1rem 0;
+        }
+
+        .incident-section strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tool-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .tool-item:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Soft Skills */
+        .soft-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .soft-skill-badge {
+            padding: 0.8rem 1.5rem;
+            background: var(--success);
+            color: white;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .contact-card a {
+            color: inherit;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .contact-card p {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 2rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll offset for sticky nav */
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        /* Hidden sections for navigation */
+        .hidden {
+            display: none;
+        }
+
+        /* PDF Button */
+        .pdf-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .pdf-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 165, 116, 0.4);
+        }
+
+        .pdf-btn::before {
+            content: '📄';
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">SC</div>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#parcours">Parcours</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#alternance">Alternance</a></li>
+                <li><a href="#outils">Outils</a></li>
+                <li><a href="#objectifs">Objectifs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="accueil" class="hero">
+            <h1>Sylvana Chéreau</h1>
+            <p class="subtitle">Administratrice Systèmes & Réseaux – Alternante</p>
+            <p class="subtitle">BUT Réseaux et Télécommunications (3e année – parcours Cybersécurité)</p>
+            
+            <p class="description">
+                Alternante depuis deux ans au sein d'une compagnie aérienne, j'interviens sur l'administration des systèmes, 
+                des réseaux et des outils métiers critiques, avec une forte sensibilité à la sécurité et à la gestion de projets techniques.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#profil" class="btn btn-primary">Découvrir mon parcours</a>
+                <a href="CV_Sylvana_Chereau.pdf" class="btn btn-secondary" download>📥 Télécharger mon CV</a>
+            </div>
+        </section>
+
+        <!-- Profil -->
+        <section id="profil">
+            <h2>Présentation</h2>
+            <p>
+                Je suis actuellement en troisième année de BUT Réseaux et Télécommunications, parcours Cybersécurité. 
+                J'effectue mon alternance depuis ma deuxième année en tant qu'administratrice systèmes et réseaux au sein d'une compagnie aérienne.
+            </p>
+            <p>
+                En entreprise, j'interviens sur la gestion des systèmes, des applicatifs et des infrastructures réseaux, 
+                afin de garantir la disponibilité, la performance et la sécurité des services pour les utilisateurs. 
+                J'ai été intégrée comme un membre à part entière de l'équipe, avec les mêmes responsabilités et exigences professionnelles.
+            </p>
+            <p>
+                Ce qui me motive dans le domaine des réseaux et télécommunications, c'est la diversité des compétences acquises, 
+                permettant ensuite de se spécialiser tout en conservant une vision globale des systèmes d'information. 
+                Cette formation s'inscrit dans la continuité de mon parcours et m'a permis de confirmer mon projet professionnel.
+            </p>
+        </section>
+
+        <!-- Parcours Académique -->
+        <section id="parcours">
+            <h2>Parcours Académique – BUT R&T</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Année 1 – Découverte & Bases</h3>
+                    <p style="color: var(--text-muted); font-style: italic; margin-bottom: 1rem;">
+                        "J'ai acquis les fondamentaux techniques et théoriques"
+                    </p>
+                    <p>
+                        Cette première année m'a permis d'acquérir des bases solides en réseaux, systèmes et télécommunications, 
+                        essentielles pour comprendre le fonctionnement global des infrastructures informatiques.
+                    </p>
+                    <ul style="margin-top: 1rem;">
+                        <li>Réseaux informatiques (bases)</li>
+                        <li>Télécommunications (signaux, transmissions)</li>
+                        <li>Systèmes & Linux</li>
+                        <li>Algorithmique / programmation</li>
+                        <li>Physique / électronique</li>
+                        <li>Méthodologie & projets</li>
+                        <li>Cybersécurité</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Année 2 – Approfondissement + Alternance</h3>
+                    <p style="color: var(--text-muted); font-style: italic; margin-bottom: 1rem;">
+                        "J'ai commencé à appliquer mes compétences en entreprise"
+                    </p>
+                    <p>
+                        Cette année a marqué le passage de la théorie à la pratique, grâce à l'alternance, 
+                        en me permettant d'appliquer mes compétences dans un environnement professionnel réel.
+                    </p>
+                    <ul style="margin-top: 1rem;">
+                        <li>Réseaux avancés (VLAN, routage, services)</li>
+                        <li>Télécoms numériques</li>
+                        <li>Virtualisation</li>
+                        <li>Sécurité réseau (bases)</li>
+                        <li>Projets tutorés</li>
+                        <li>Début alternance</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Année 3 – Professionnalisation</h3>
+                    <p style="color: var(--text-muted); font-style: italic; margin-bottom: 1rem;">
+                        "Je suis prête à intégrer le monde professionnel"
+                    </p>
+                    <p>
+                        Cette dernière année m'a permis de développer une vision plus globale des systèmes d'information, 
+                        en intégrant des notions de supervision, de coordination et de gestion de projet, 
+                        en lien direct avec mon projet professionnel.
+                    </p>
+                    <ul style="margin-top: 1rem;">
+                        <li>Architectures réseaux</li>
+                        <li>Sécurité & supervision</li>
+                        <li>Télécommunications avancées</li>
+                        <li>Gestion de projet</li>
+                        <li>Projets complexes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compétences Techniques -->
+        <section id="competences">
+            <h2>Compétences Techniques</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>🌐 Réseaux</h4>
+                    <ul>
+                        <li><strong>Modèle OSI :</strong> utilisation du modèle OSI pour résoudre plus facilement les incidents ou problèmes en entreprise</li>
+                        <li><strong>Adressage IP, VLAN :</strong> complexité des adressages IPs en entreprise, segmentation réseau des différents services</li>
+                        <li><strong>Routage :</strong> installation des routeurs et configuration des routes</li>
+                        <li><strong>Services réseau :</strong> gestion et sécurisation des flux DHCP, DNS, HTTP, FTP</li>
+                        <li><strong>Supervision réseau :</strong> utilisation et investigation des données de supervision</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h4>📡 Télécommunications</h4>
+                    <ul>
+                        <li><strong>Transmission de signaux :</strong> tests après installation de bornes wifi, analyse de couverture réseau</li>
+                        <li><strong>Télécoms numériques :</strong> compréhension des protocoles de transmission</li>
+                        <li><strong>Fibre optique :</strong> mise en place de nouveaux équipements pour une meilleure connectivité</li>
+                        <li><strong>Téléphonie :</strong> configuration des équipements téléphoniques et gestion avec Xivo</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h4>💻 Systèmes</h4>
+                    <ul>
+                        <li><strong>Linux :</strong> administration, amélioration et résolution de problèmes système, mise en place de serveurs</li>
+                        <li><strong>Windows Server :</strong> gestion de l'Active Directory et des utilisateurs</li>
+                        <li><strong>Virtualisation :</strong> gestion centralisée des serveurs, VM et clusters via plateforme web</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h4>🔒 Sécurité</h4>
+                    <ul>
+                        <li><strong>Pare-feu :</strong> Palo Alto, pfSense</li>
+                        <li><strong>VPN :</strong> fonctionnement en entreprise, création et sécurisation pour utilisateurs et prestataires</li>
+                        <li><strong>Cybersécurité :</strong> collaboration avec prestataires pour la gestion des cyberattaques et solutions de protection</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projets Académiques -->
+        <section id="projets">
+            <h2>Projets Académiques</h2>
+
+            <div class="project-card">
+                <h4>SAE 5.CYBER.11 : Supervision de la sécurité</h4>
+                <div>
+                    <span class="project-tag">SIEM</span>
+                </div>
+                <p>
+                    Ce projet m'a permis de comprendre l'importance de la centralisation des logs, 
+                    de l'analyse des incidents et de la prise de décision rapide en environnement critique.
+                </p>
+                <a href="SAE_5_CYBER_11_SIEM.pdf" class="pdf-btn" target="_blank">Voir le compte rendu</a>
+            </div>
+
+            <div class="project-card">
+                <h4>SAE 501 : Concevoir, Réaliser et présenter une solution technique</h4>
+                <div>
+                    <span class="project-tag">SF/SD</span>
+                    <span class="project-tag">Climatisation automatique</span>
+                </div>
+                <p>
+                    Ce projet m'a permis de structurer une solution technique de bout en bout en équipe, 
+                    tout en développant ma capacité à analyser un besoin, proposer une solution adaptée et 
+                    la présenter de manière claire, compétences essentielles en gestion de projet technique.
+                </p>
+                <a href="SAE_501_Climatisation.pdf" class="pdf-btn" target="_blank">Voir le compte rendu</a>
+            </div>
+
+            <div class="project-card">
+                <h4>R4.Cyber.01 : Sécuriser un système d'information</h4>
+                <div>
+                    <span class="project-tag">Active Directory</span>
+                </div>
+                <p>
+                    Ce projet m'a permis de comprendre l'importance de la gestion des identités et 
+                    des droits d'accès dans un système d'information, ainsi que l'impact direct de 
+                    la sécurité sur les usages métiers.
+                </p>
+                <a href="R4_Cyber_01_AD.pdf" class="pdf-btn" target="_blank">Voir le compte rendu</a>
+            </div>
+
+            <div class="project-card">
+                <h4>R501 : Wifi Avancé</h4>
+                <div>
+                    <span class="project-tag">TP</span>
+                </div>
+                <p>
+                    Ce travail m'a sensibilisée aux enjeux de performance, de couverture et de 
+                    fiabilité des réseaux sans fil, en lien direct avec l'expérience utilisateur.
+                </p>
+                <a href="R501_Wifi_Avance.pdf" class="pdf-btn" target="_blank">Voir le compte rendu</a>
+            </div>
+
+            <div class="project-card">
+                <h4>R5.03 : Ingénierie de systèmes télécoms</h4>
+                <div>
+                    <span class="project-tag">E2 et E3</span>
+                </div>
+                <p>
+                    Ce module m'a permis de renforcer ma capacité à analyser des architectures télécoms 
+                    complexes et à comprendre leurs contraintes techniques et opérationnelles.
+                </p>
+                <a href="R5_03_Telecoms.pdf" class="pdf-btn" target="_blank">Voir le compte rendu</a>
+            </div>
+
+            <div class="project-card">
+                <h4>SAE 303 : Conception d'un Réseau Informatique Sécurisé Multi-sites</h4>
+                <p>
+                    Ce projet m'a permis de travailler sur la conception d'architectures sécurisées multi-sites, 
+                    proches des problématiques rencontrées en entreprise. Et de comprendre ce qu'il se passe 
+                    après ma box internet.
+                </p>
+                <a href="SAE_303_Reseau_Multi_Sites.pdf" class="pdf-btn" target="_blank">Voir le compte rendu</a>
+            </div>
+
+            <div class="project-card">
+                <h4>R303 : Serveur DNS</h4>
+                <p>
+                    Ce projet m'a sensibilisée à l'importance des services d'infrastructure essentiels 
+                    et à leur rôle central dans la disponibilité des systèmes.
+                </p>
+                <a href="R303_DNS.pdf" class="pdf-btn" target="_blank">Voir le compte rendu</a>
+            </div>
+        </section>
+
+        <!-- Expérience en Alternance -->
+        <section id="alternance">
+            <h2>Expérience en Alternance</h2>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                Durant 2 ans au poste d'administratrice systèmes et réseaux, j'ai eu à gérer diverses missions, 
+                certaines très importantes à régler dans l'immédiat et bien d'autres moins complexes et documentées.
+            </p>
+
+            <div class="incident-card">
+                <h4>🔧 Incident 1 – Perte de connexion des écrans d'affichage</h4>
+                
+                <div class="incident-section">
+                    <strong>Contexte</strong>
+                    <p>Plusieurs écrans d'affichage ne recevaient plus les informations en temps réel.</p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Analyse</strong>
+                    <p>
+                        Avec l'aide de mon responsable, nous avons commencé par vérifier la partie physique 
+                        (voyants défaillants, câblage). Après redémarrage des équipements sans amélioration, 
+                        nous avons élargi l'analyse au périmètre opérateur.
+                    </p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Action</strong>
+                    <p>
+                        Nous avons accédé à la plateforme de supervision de l'opérateur et identifié un 
+                        dysfonctionnement sur l'un de ses routeurs.
+                    </p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Impact</strong>
+                    <p>
+                        Perte temporaire de l'affichage des informations, pouvant impacter la communication opérationnelle.
+                    </p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Résultat</strong>
+                    <p>
+                        Après résolution côté opérateur, la connexion a été rétablie et les écrans ont de nouveau 
+                        fonctionné normalement.
+                    </p>
+                </div>
+            </div>
+
+            <div class="incident-card">
+                <h4>🔧 Incident 2 – Transfert de fichiers non conforme avec un prestataire</h4>
+                
+                <div class="incident-section">
+                    <strong>Contexte</strong>
+                    <p>Un prestataire n'avait pas reçu les fichiers journaliers dans la version attendue.</p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Analyse</strong>
+                    <p>
+                        Plusieurs tentatives de transfert ont été réalisées avec l'aide des collaborateurs concernés 
+                        afin d'identifier l'origine de l'erreur (version, contenu, format).
+                    </p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Action</strong>
+                    <p>
+                        Coordination entre les équipes internes et le prestataire pour relancer les transferts avec 
+                        les bons paramètres.
+                    </p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Impact</strong>
+                    <p>Risque de retard dans le traitement des données par le prestataire.</p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Résultat</strong>
+                    <p>Les fichiers conformes ont été transmis avec succès et la situation a été régularisée.</p>
+                </div>
+            </div>
+
+            <div class="incident-card">
+                <h4>🔧 Incident 3 – Lenteur sur un serveur critique de l'entreprise</h4>
+                
+                <div class="incident-section">
+                    <strong>Contexte</strong>
+                    <p>
+                        Un serveur clé, exploité 24h/24 et 7j/7, présentait des lenteurs impactant plusieurs utilisateurs.
+                    </p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Analyse</strong>
+                    <p>
+                        Une procédure existait oralement mais n'était pas formalisée. Afin de garantir la reproductibilité 
+                        de l'intervention, j'ai suivi l'ensemble des étapes et documenté la démarche.
+                    </p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Action</strong>
+                    <p>
+                        Rédaction d'une procédure écrite détaillant les vérifications et actions à mener.
+                    </p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Impact</strong>
+                    <p>Ralentissements des services utilisés quotidiennement par les équipes.</p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Résultat</strong>
+                    <p>
+                        La procédure est aujourd'hui utilisée par l'équipe, corrigée et validée par ma tutrice.
+                    </p>
+                </div>
+            </div>
+
+            <div class="incident-card">
+                <h4>🔧 Incident 4 – Arrêt d'un hyperviseur</h4>
+                
+                <div class="incident-section">
+                    <strong>Contexte</strong>
+                    <p>Une alerte indiquait l'arrêt d'un hyperviseur hébergeant plusieurs machines virtuelles.</p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Analyse</strong>
+                    <p>
+                        Tests de connectivité (ping), vérification du basculement des VM, tentative de redémarrage 
+                        et de réinstallation logicielle sans succès. Une intervention physique a alors été réalisée.
+                    </p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Action</strong>
+                    <p>
+                        Après analyse avec ma tutrice, le problème a été identifié comme provenant de la carte RAID. 
+                        Le serveur a été démonté, la carte remplacée, puis l'hyperviseur réinstallé et réintégré 
+                        dans son cluster Ovirt.
+                    </p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Impact</strong>
+                    <p>Risque d'indisponibilité des services hébergés.</p>
+                </div>
+
+                <div class="incident-section">
+                    <strong>Résultat</strong>
+                    <p>
+                        L'hyperviseur a été remis en service sans extinction intempestive et réintégré avec succès au cluster. 
+                        Cette intervention a permis de rétablir la disponibilité du cluster sans perte de données, 
+                        tout en améliorant ma capacité à analyser des incidents critiques et à travailler en coordination 
+                        avec ma tutrice.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outils & Technologies -->
+        <section id="outils">
+            <h2>Outils & Technologies</h2>
+            
+            <div class="tools-grid">
+                <div class="tool-item">Cisco Packet Tracer</div>
+                <div class="tool-item">Wireshark</div>
+                <div class="tool-item">Linux</div>
+                <div class="tool-item">VirtualBox / VMware</div>
+                <div class="tool-item">Ovirt</div>
+                <div class="tool-item">Zabbix</div>
+                <div class="tool-item">LibreNMS</div>
+                <div class="tool-item">Bacula</div>
+                <div class="tool-item">HarfangLab</div>
+                <div class="tool-item">OpenVPN</div>
+                <div class="tool-item">Teams</div>
+                <div class="tool-item">GNS3</div>
+                <div class="tool-item">Zimbra</div>
+                <div class="tool-item">GLPI</div>
+                <div class="tool-item">SimplyDesk</div>
+                <div class="tool-item">VADE</div>
+                <div class="tool-item">Exchange</div>
+                <div class="tool-item">Palo Alto</div>
+                <div class="tool-item">Apache Guacamole</div>
+                <div class="tool-item">Seafile</div>
+                <div class="tool-item">Git</div>
+            </div>
+
+            <h3 style="margin-top: 3rem;">Soft Skills</h3>
+            <div class="soft-skills">
+                <div class="soft-skill-badge">Travail en équipe</div>
+                <div class="soft-skill-badge">Autonomie</div>
+                <div class="soft-skill-badge">Communication</div>
+                <div class="soft-skill-badge">Rigueur</div>
+                <div class="soft-skill-badge">Gestion du temps</div>
+                <div class="soft-skill-badge">Gestion du stress</div>
+            </div>
+        </section>
+
+        <!-- Objectifs Professionnels -->
+        <section id="objectifs">
+            <h2>Objectifs Professionnels</h2>
+            
+            <p>
+                Mon objectif professionnel est de m'orienter vers un poste d'<strong>AMOA technique</strong>, 
+                notamment au sein de la filière proposée par Expernet. Ce rôle correspond à mon souhait d'évoluer 
+                vers la gestion de projets informatiques, en accompagnant les équipes techniques, en facilitant la 
+                coordination entre les acteurs et en contribuant à la finalisation des projets de l'entreprise.
+            </p>
+            <p>
+                À ce jour, ce type de poste n'est pas encore formalisé dans mon entreprise actuelle. Je poursuis 
+                donc mes missions en tant qu'administratrice systèmes et réseaux, un poste qui me permet de renforcer 
+                mes compétences techniques, ma compréhension des infrastructures et ma capacité d'analyse, des atouts 
+                essentiels pour une future évolution vers l'AMOA.
+            </p>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <h2>Contact</h2>
+            
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>📧 Email</h3>
+                    <a href="mailto:fygrvnirnv@gmail.com">fygrvnirnv@gmail.com</a>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>💼 LinkedIn</h3>
+                    <a href="#" target="_blank">Profil LinkedIn</a>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>📍 Localisation</h3>
+                    <p>La Possession (97419)<br>La Réunion</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="CV_Sylvana_Chereau.pdf" class="btn btn-primary" download>📥 Télécharger mon CV</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
